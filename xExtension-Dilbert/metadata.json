@@ -1,0 +1,8 @@
+{
+	"name": "Dilberts Daily Strip",
+	"author": "Kevin Papst",
+	"description": "Embed the images from Dilberts daily feed inside article content.",
+	"version": 0.1,
+	"entrypoint": "Dilbert",
+	"type": "system"
+}
