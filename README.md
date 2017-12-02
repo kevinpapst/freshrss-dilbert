@@ -20,10 +20,9 @@ So please play fair and visit them on a daily base instead of using this extensi
 
 ## Requirements
 
-This FreshRSS extension uses the PHP extension "xml" and their classes DOMDocument and DOMXpath.
+This FreshRSS extension uses the PHP extension [DOM](http://php.net/dom) and [XML](http://php.net/xml).
 
-If it doesn't work for you, make sure that you have the PHP xml module installed and loaded. 
-You can read more about it at http://php.net/manual/en/dom.setup.php
+As those are requirements by [FreshRSS(https://github.com/FreshRSS/FreshRSS) itself, you should be good to go.
 
 
 ## Installation
