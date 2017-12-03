@@ -3,6 +3,9 @@
 /**
  * Class DilbertExtension
  *
+ * Due to the nature of ths extension, this significantly slows down the fetching process ... but ONLY for the Dilbert feed itself!
+ * You should only recognize it during the initial adding and importing process.
+ *
  * Latest version can be found at https://github.com/kevinpapst/freshrss-dilbert
  *
  * @author Kevin Papst
@@ -24,7 +27,8 @@ class DilbertExtension extends Minz_Extension
     }
     
     /**
-     * Inserts the YouTube video iframe into the content of an entry, if the entries link points to a YouTube watch URL.
+     * Embed the Comic image into the entry, if the feed is from Dilbert AND the image can be found in
+     * the origin sites content.
      *
      * @param FreshRSS_Entry $entry
      * @return mixed
