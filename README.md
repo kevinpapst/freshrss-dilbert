@@ -11,7 +11,7 @@ This extension supports both feed addresses:
 - the old one at http://feeds.feedburner.com/DilbertDailyStrip
 - and the new one at http://feed.dilbert.com/dilbert/daily_strip 
 
-But this extension will ONLY work on new added feed items as it manipulates them while inserting into the  
+But this extension will ONLY work on new added feed items as it manipulates them while fetching new items.
 
 ## Fair use
 
