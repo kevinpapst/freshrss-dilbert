@@ -22,7 +22,7 @@ So please play fair and visit them on a daily base instead of using this extensi
 
 This FreshRSS extension uses the PHP extension [DOM](http://php.net/dom) and [XML](http://php.net/xml).
 
-As those are requirements by [FreshRSS(https://github.com/FreshRSS/FreshRSS) itself, you should be good to go.
+As those are requirements by [FreshRSS](https://github.com/FreshRSS/FreshRSS) itself, you should be good to go.
 
 
 ## Installation
