@@ -2,7 +2,7 @@
 	"name": "Dilberts Daily Comic",
 	"author": "Kevin Papst",
 	"description": "Embed the images from Dilberts daily feed inside article content.",
-	"version": 0.1,
+	"version": 0.2,
 	"entrypoint": "Dilbert",
 	"type": "system"
 }
