@@ -23,7 +23,6 @@ class DilbertExtension extends Minz_Extension
         }
 
         $this->registerHook('entry_before_insert', array($this, 'embedDilbert'));
-        $this->registerTranslates();
     }
     
     /**
@@ -59,6 +58,8 @@ class DilbertExtension extends Minz_Extension
         if (!is_null($comicContainer)) {
             $comicContainer = $comicContainer->item(0);
 
+            $originalHash = $entry->hash();
+
             // add some meta info
             $entry->_author($comicContainer->getAttribute('data-creator'));
             $entry->_title($entry->title() . ' - ' . $comicContainer->getAttribute('data-title'));
@@ -71,6 +72,8 @@ class DilbertExtension extends Minz_Extension
                 $iconWithLink = $node->ownerDocument->saveHTML($node);
                 $entry->_content($iconWithLink);
             }
+
+            $entry->_hash($originalHash);
         }
 
         return $entry;
