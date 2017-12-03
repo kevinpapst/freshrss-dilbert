@@ -1,6 +1,6 @@
-# FreshRSS - "Dilbert Daily Strip" extension
+# FreshRSS - "Dilberts daily comic" extension
 
-This FreshRSS extension allows you to directly enjoy the Dilberts daily strip within your FreshRSS installation.
+This FreshRSS extension allows you to directly enjoy the Dilberts daily comic strip within your FreshRSS installation.
 
 To use it, upload the ```xExtension-Dilbert``` directory to the FreshRSS `./extensions` directory on your server and enable it on the extension panel in FreshRSS.
 
