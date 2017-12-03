@@ -13,6 +13,12 @@ This extension supports both feed addresses:
 
 But this extension will ONLY work on new added feed items as it manipulates them while fetching new items.
 
+## Known issues
+
+Unfortunately there is a problem with FreshRSS 1.8. 
+Old entries will be rewritten back to their original state after updating the feed.
+This will be fixed with the upcoming release 1.9, see also https://github.com/FreshRSS/FreshRSS/issues/1706  
+
 ## Fair use
 
 Please note that they deactivated the images in their RSS feed years ago, I suspect mainly to get more visitors to their website.
