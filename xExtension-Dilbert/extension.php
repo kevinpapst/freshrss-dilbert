@@ -23,8 +23,39 @@ class DilbertExtension extends Minz_Extension
         }
 
         $this->registerHook('entry_before_insert', array($this, 'embedDilbert'));
+        //$this->registerHook('entry_before_display', array($this, 'fixDilbert'));
     }
-    
+
+    /**
+     * Only here for debugging purpose
+     *
+     * @param FreshRSS_Entry $entry
+     * @return mixed
+     */
+    public function fixDilbert($entry)
+    {
+        $dom = new DOMDocument;
+        $dom->loadHTML($entry->content());
+        libxml_use_internal_errors(false);
+
+        $xpath = new DOMXpath($dom);
+
+        $image = $xpath->query("//img");
+        if (!is_null($image)) {
+            $image = $image->item(0);
+            if (!is_null($image)) {
+                $source = $image->getAttribute('src');
+                if (strpos($source, '//') === 0) {
+                    $image->setAttribute('src', 'https:' . $source);
+                    $entry->_content($image->ownerDocument->saveHTML($dom));
+                }
+            }
+        }
+
+
+        return $entry;
+    }
+
     /**
      * Embed the Comic image into the entry, if the feed is from Dilbert AND the image can be found in
      * the origin sites content.
@@ -69,6 +100,21 @@ class DilbertExtension extends Minz_Extension
             $comicLinks = $xpath->query("//a[@class='img-comic-link']", $comicContainer);
             if (!is_null($comicLinks)) {
                 $node = $comicLinks->item(0);
+
+                // the image URL is now started protocol relative, so we need to prepend https, otherwise
+                // reading the articles via the API might fail. In a browser you will not see the problem, only
+                // when articles are displayed inside an app that does not support these protocol-less URLs.
+                $image = $xpath->query("//img", $node);
+                if (!is_null($image)) {
+                    $image = $image->item(0);
+                    if (!is_null($image)) {
+                        $source = $image->getAttribute('src');
+                        if (strpos($source, '//') === 0) {
+                            $image->setAttribute('src', 'https:' . $source);
+                        }
+                    }
+                }
+
                 $iconWithLink = $node->ownerDocument->saveHTML($node);
                 $entry->_content($iconWithLink);
             }
