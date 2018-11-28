@@ -45,7 +45,7 @@ More extensions can be found at [FreshRSS/Extensions](https://github.com/FreshRS
 
 ## Changelog
 
-0.3: 
+0.3.1 and 0.3: 
 - Fixed broken image due to new Dilbert CDN and image URLs not working with missing protocol (in Apps via API)
 
 0.2: 
