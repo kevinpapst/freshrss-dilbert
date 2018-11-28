@@ -23,7 +23,7 @@ class DilbertExtension extends Minz_Extension
         }
 
         $this->registerHook('entry_before_insert', array($this, 'embedDilbert'));
-        //$this->registerHook('entry_before_display', array($this, 'fixDilbert'));
+        $this->registerHook('entry_before_display', array($this, 'fixDilbert'));
     }
 
     /**
@@ -34,6 +34,10 @@ class DilbertExtension extends Minz_Extension
      */
     public function fixDilbert($entry)
     {
+        if (!$this->supports($entry)) {
+            return $entry;
+        }
+
         $dom = new DOMDocument;
         $dom->loadHTML($entry->content());
         libxml_use_internal_errors(false);
@@ -52,8 +56,28 @@ class DilbertExtension extends Minz_Extension
             }
         }
 
-
         return $entry;
+    }
+
+    /**
+     * Check if we support working on this entry.
+     * We do not want to parse every displayed entry, but only the DILBERT ones ;-)
+     *
+     * @param FreshRSS_Entry $entry
+     * @return bool
+     */
+    protected function supports($entry)
+    {
+        $link = $entry->link();
+
+        if (
+            stripos($link, '://feedproxy.google.com/~r/DilbertDailyStrip') === false &&
+            stripos($link, '://feed.dilbert.com/~r/dilbert/daily_strip') === false
+        ) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -65,16 +89,11 @@ class DilbertExtension extends Minz_Extension
      */
     public function embedDilbert($entry)
     {
-        $link = $entry->link();
-
-        if (
-            stripos($link, '://feedproxy.google.com/~r/DilbertDailyStrip') === false &&
-            stripos($link, '://feed.dilbert.com/~r/dilbert/daily_strip') === false
-        ) {
+        if (!$this->supports($entry)) {
             return $entry;
         }
 
-        $urlParts = explode('/', $link);
+        $urlParts = explode('/', $entry->link());
         $date = $urlParts[count($urlParts)-1];
         $url = 'http://dilbert.com/strip/' . $date;
 
