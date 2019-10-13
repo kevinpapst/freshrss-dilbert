@@ -8,8 +8,9 @@ To use it, upload the ```xExtension-Dilbert``` directory to the FreshRSS `./exte
 
 This extension supports both feed addresses:
 
-- the old one at http://feeds.feedburner.com/DilbertDailyStrip
-- and the new one at http://feed.dilbert.com/dilbert/daily_strip 
+- the oldest one at https://feeds.feedburner.com/DilbertDailyStrip
+- the newer one at http://feed.dilbert.com/dilbert/daily_strip 
+- and the newest one at https://dilbert.com/feed
 
 But this extension will ONLY work on new added feed items as it manipulates them while fetching new items.
 
