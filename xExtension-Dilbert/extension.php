@@ -72,11 +72,11 @@ class DilbertExtension extends Minz_Extension
 
         if (
             stripos($link, '://feedproxy.google.com/~r/DilbertDailyStrip') === false &&
-            stripos($link, '://feed.dilbert.com/~r/dilbert/daily_strip') === false
+            stripos($link, '://feed.dilbert.com/~r/dilbert/daily_strip') === false &&
+            stripos($link, '://dilbert.com/strip/') === false
         ) {
             return false;
         }
-
         return true;
     }
 
