@@ -95,7 +95,7 @@ class DilbertExtension extends Minz_Extension
 
         $urlParts = explode('/', $entry->link());
         $date = $urlParts[count($urlParts)-1];
-        $url = 'http://dilbert.com/strip/' . $date;
+        $url = 'https://dilbert.com/strip/' . $date;
 
         libxml_use_internal_errors(true);
         $dom = new DOMDocument;
