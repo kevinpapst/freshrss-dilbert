@@ -12,6 +12,20 @@
  */
 class DilbertExtension extends Minz_Extension
 {
+    public function install()
+    {
+        return true;
+    }
+
+    public function uninstall()
+    {
+        return true;
+    }
+
+    public function handleConfigureAction()
+    {
+    }
+
     /**
      * Initialize this extension
      */
